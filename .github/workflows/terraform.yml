@@ -6,25 +6,25 @@ on:
       - stage
     paths:
       - terraform/**
-    pull_request:
-      branches:
-        - main
-      paths:
-        - terraform/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - terraform/**
 
 env:
-#credentials for deployment to AWS
-AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#s3 bucket for terraform state
-BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
-AWS_REGION: us-east-1
-EKS_CLUSTER: vprofile-eks
+  #credentials for deployment to AWS
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #s3 bucket for terraform state
+  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
+  AWS_REGION: us-east-1
+  EKS_CLUSTER: vprofile-eks
 
 jobs:
   terraform:
     name: "Apply terraform code changes"
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -36,8 +36,8 @@ jobs:
 
       - name: Setup terraform with specified version on the runner
         uses: hashicorp/setup-terraform@v3
-          #with:
-          #terraform_version: "1.1.7"
+        with:
+          terraform_version: "1.1.7"
 
       - name: Terraform init
         id: init
@@ -58,4 +58,3 @@ jobs:
       - name: Terraform plan status
         if: steps.plan.outcome == 'failure' 
         run: exit 1
-      
