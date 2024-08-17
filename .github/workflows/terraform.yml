@@ -1,4 +1,4 @@
-name: "Vprofile IAC"
+name: "vprofile IAC"
 
 on:
   push:
@@ -58,3 +58,5 @@ jobs:
       - name: Terraform plan status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+
+        
