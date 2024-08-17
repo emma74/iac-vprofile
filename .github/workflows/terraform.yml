@@ -43,10 +43,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-     # - name: Setup terraform with specified version on the runner
-       # uses: hashicorp/setup-terraform@v3
-      #  with:
-      #    terraform_version: "1.6.3"
+      - name: Setup terraform with specified version on the runner
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.6.3"
 
       - name: Terraform init
         id: init
