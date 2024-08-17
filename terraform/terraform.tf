@@ -1,3 +1,5 @@
+
+#Provider file
 terraform {
   required_providers {
     aws = {
@@ -27,13 +29,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "gitopsterrastate"
+    bucket = "vprofileactions813"
     key    = "terraform.tfstate"
-    region = "us-east-2"
+    region = "us-east-1"
   }
 
   required_version = "~> 1.6.3"
 }
-##
-##
-##
+
