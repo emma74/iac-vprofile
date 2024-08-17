@@ -1,3 +1,6 @@
+
+#This file defines variables used in other tf files
+
 variable "region" {
   description = "AWS region"
   type        = string
@@ -9,4 +12,4 @@ variable "clusterName" {
   type        = string
   default     = "vprofile-eks"
 }
-#
+
